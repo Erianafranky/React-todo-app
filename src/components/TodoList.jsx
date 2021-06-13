@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo.jsx';
+import { useParams } from 'react-router';
 
 function TodoList() {
     const [todos, setTodos] = useState([]);
+    const params = useParams();
+
+    useEffect(() => {
+		fetch(`https://jsonplaceholder.typicode.com/todos?userId=${params.userid}`)
+			.then((response) => response.json())
+			.then((result) => {
+				setTodos(result);
+			});
+	}, [params]);
+
 
     const addTodo = todo => {
         if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -42,9 +53,16 @@ function TodoList() {
     return (
         <div>
             <h1>What is the plan for today</h1>
-            <TodoForm onSubmit={addTodo} />
+            {/* <TodoForm onSubmit={addTodo} />
             <Todo todos={todos} completeTodo={completeTodo} 
             removeTodo={removeTodo} updateTodo={updateTodo} />
+             */}
+             <TodoForm onSubmit={addTodo} />
+            {todos.map(() => (
+				<Todo todos = {todos} completeTodo={completeTodo}
+				removeTodo={removeTodo} updateTodo={updateTodo} />
+			))}
+			
             
         </div>
     )

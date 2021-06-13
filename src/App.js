@@ -6,7 +6,8 @@ import Navbar from './components/navbar';
 import StateProvider from './components/stateprovider';
 
 import './components/Form.css'
-import UserTodo from './components/UserTodo';
+import TodoList from './components/TodoList';
+//import UserTodo from './components/UserTodo';
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           {/* render Todolist Component when we hit /todo */}
           <div className="todo-app">
 					<Route exact path='/todo'>
-						<UserTodo />
+						<TodoList />
 					</Route>
           </div>
         </Switch>

@@ -17,7 +17,10 @@ const UserTodo = () => {
 
 	return (
 		<div>
-			<TodoList />
+			{usertodos.map((todos, completeTodo, removeTodo, updateTodo) => (
+				<TodoList key= {todos} completeTodo={completeTodo}
+				removeTodo={removeTodo} updateTodo={updateTodo} />
+			))}
 			
 		</div>
 	);
