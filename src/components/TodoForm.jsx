@@ -1,14 +1,16 @@
 import React, {useState, useEffect, useRef} from 'react'
+//import { useParams } from 'react-router-dom';
 
 function TodoForm(props) {
     const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
     const inputRef = useRef(null)
+    //const params = useParams();
 
     useEffect(() => {
         inputRef.current.focus()
-    })
-
+    }) 
+    
     const handleChange = e => {
         setInput(e.target.value)
     }
@@ -36,6 +38,9 @@ function TodoForm(props) {
                 className='todo-input'
                 onChange={handleChange}
                 ref={inputRef}
+                //ref={params}
+    
+				
             />
             <button className='todo-button'>Update</button> 
             </>
@@ -51,6 +56,9 @@ function TodoForm(props) {
                 className='todo-input'
                 onChange={handleChange}
                 ref={inputRef}
+                //ref={params}
+              
+			
             />
             <button className='todo-button'>Add todo</button>
             </>
@@ -63,3 +71,6 @@ function TodoForm(props) {
 }
 
 export default TodoForm;
+
+
+

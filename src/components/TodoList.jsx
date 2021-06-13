@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TodoForm from './TodoForm';
-import Todo from './Todo.js';
+import Todo from './Todo.jsx';
 
 function TodoList() {
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState([]);
 
     const addTodo = todo => {
         if (!todo.text || /^\s*$/.test(todo.text)) {
